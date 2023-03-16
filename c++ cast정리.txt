@@ -1,0 +1,20 @@
+cast 사용법
+~~_cast<type>(피연산자)
+
+cs
+
+const_cast
+
+static_cast
+int asd = 41;
+c적 형 변환은 (double)asd; 와 같이 할 수 있다.
+c++ 형 변환은 static_cast<double>asd; 와 같이 할 수 있다.
+
+c적 형 변환은 컴파일은 성공하지만 런타임 도중 오류가 발생할 수 있지만
+c++ 형 변환은 컴파일 구간에서 실패하기 때문에 cast 를 사용하는 것을 추천한다 한다
+
+ex.
+enum class RSP {ROCK=1, Sesser, Paper};
+static_cast<RSP>(1); 
+과 같이 변경할 수도 있다.
+

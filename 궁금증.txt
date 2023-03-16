@@ -1,40 +1,51 @@
 
 ---
 2023-03-13 의문점
-타입은 쓰임세에 따라 효율적으로 메모리를 사용하기 위해 분류가 되는데
-int, long은 사용하는 byte 수 가 같다
-그렇다면 long과 int의 차이는 무엇일까?
+Q.타입은 쓰임세에 따라 효율적으로 메모리를 사용하기 위해 분류가 되는데
+    int, long은 사용하는 byte 수 가 같다
+    그렇다면 long과 int의 차이는 무엇일까?
 
 
-int cpu가 가장 효율적으로 사용할 수 있는 기본적인 정수형으로
-int는 운영체제와 cpu의 레지스터에 따라 변경되는데
-32byte 운영체제에서는 4byte의 용량을 갖고있고
-64byte 운영체제어서는 8byte의 용량을 갖게된다
+A.int cpu가 가장 효율적으로 사용할 수 있는 기본적인 정수형으로
+    int는 운영체제와 cpu의 레지스터에 따라 변경되는데
+    32byte 운영체제에서는 4byte의 용량을 갖고있고
+    64byte 운영체제어서는 8byte의 용량을 갖게된다
 
-하지만 long은 32byte와 64byte 운영체제에서
-똑같이 항상 4byte의 용량을 갖게된다
+    하지만 long은 32byte와 64byte 운영체제에서
+    똑같이 항상 4byte의 용량을 갖게된다
 
-라는 차이점이 있다
+    라는 차이점이 있다
 ---
 scanf("문자열 부분")에는 무슨 영향을 끼치는걸까??
 여러 문자를 동시에 받을 때 띄어쓰기 말고는 안되는걸까?
+scanf("%d", &num)
 
 ---
+%c %s
 2023-03-14 의문점
-string 은 문자열과 문자배열에 사용되는건가?
-char 은 문자 배열에 사용되고 \0으로 문자열로 판단된다는데 char은 데이터를 하나밖에 저장 못하는걸로 알고있다
+Q.string 은 문자열과 문자배열에 사용되는건가?
+    char 은 문자 배열에 사용되고 \0으로 문자열로 판단된다는데 char은 데이터를 하나밖에 저장 못하는걸로 알고있다
 
-아니면 string 은 널문자 없이 문자열로 취급되는건가?
-그렇다면 어떻게 string 은 char 이 가지고 있는 문제점을 해결한건가
+    아니면 string 은 널문자 없이 문자열로 취급되는건가?
+    그렇다면 어떻게 string 은 char 이 가지고 있는 문제점을 해결한건가
 
 
-c언어는 null-terminated-string 을 사용하는 언어여서 둘이 섞어 쓸 수 있게 하려
-C++ 에서는 string 이라는 널문자를 사용하지 않고 문자열을 나타내는 type 인 string 을 만들게 됬다
+A. c언어는 null-terminated-string 을 사용하는 언어여서 둘이 섞어 쓸 수 있게 하려
+    C++ 에서는 string 이라는 널문자를 사용하지 않고 문자열을 나타내는 type 인 string 을 만들게 됬다
 
-C++ 에서 std::string::c_str 이라는 함수가 있는데 이를 사용하면 C 적으로 string 을 구현하게 되는데
-이때 C++의 std::string 은 \0(널문자) 를 사용하지 않기 떄문에 null-terminated-string 과 비교를 했을 때
-같지 않다는 결과가 나올 수 있기에 이 부분만 조심한다면 std::string 을 사용할 때의 문제는 없다고 한다.
+    C++ 에서 std::string::c_str 이라는 함수가 있는데 이를 사용하면 C 적으로 string 을 구현하게 되는데
+    이때 C++의 std::string 은 \0(널문자) 를 사용하지 않기 떄문에 null-terminated-string 과 비교를 했을 때
+    같지 않다는 결과가 나올 수 있기에 이 부분만 조심한다면 std::string 을 사용할 때의 문제는 없다고 한다.
 
-C언어는 null-terminated-string 을 사용하는데 이는 char type 의 배열에 문자열을 넣어 문자 배열을 만든다
-그리고 널문자를 사용해 char type 의 배열을 문자열로 사용하게 됬다.
+    C언어는 null-terminated-string 을 사용하는데 이는 char type 의 배열에 문자열을 넣어 문자 배열을 만든다
+    그리고 널문자를 사용해 char type 의 배열을 문자열로 사용하게 됬다.
 ---
+2023-03-15 궁금증
+Q. const  int * p  = &value; // 포인터 p 를 이용해서 value 의 값을 변경할 수 없다
+    라는 의미는 
+    포인터 변수 p 에 저장되어있는 value의 주소를 다른 주소로 변경할 수 없다는 말이 맞는건가요???
+
+---
+Q. 
+int digit = 34;
+double* static_cast<double*>(&digit)
